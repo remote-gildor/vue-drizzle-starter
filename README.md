@@ -13,6 +13,10 @@ This starter kit includes:
 
 Run `npm install` command in both root folder and the `vapp` folder.
 
+## Ganache
+
+Make sure Ganache is running on port **7545**.
+
 ## Bootstrap
 
 See Vue Bootstrap docs here: https://bootstrap-vue.org/docs/components
