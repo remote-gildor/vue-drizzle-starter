@@ -64,17 +64,29 @@ computed: {
 
 See docs here: https://www.trufflesuite.com/docs/drizzle/getting-started/contract-interaction. Note that docs are written for the React version of Drizzle, not for Vue.
 
-### cacheSend
+### cacheSend() or sendTransaction()
 
 `cacheSend` is for changing contract state:
 
 ```javascript
-this.drizzleInstance.contracts["SimpleStorage"].methods["set"].cacheSend(this.value);
+this.drizzleInstance.contracts["SimpleStorage"].methods["set"].cacheSend("77");
 ```
 
-### cacheCall
+But you can use web3 functions directly instead, such as `sendTransaction()`:
 
-If you don't want to change the contract state, use `cacheCall` instead.
+```javascript
+this.drizzleInstance.web3.eth.sendTransaction({
+  from: "0x123...",
+  to: "0x456...",
+  value: "10000000000000000"
+});
+```
+
+### getContractData() or call()
+
+If you don't want to change the contract state, use `getContractData()` or `call()` instead.
+
+See more info [here](https://github.com/remote-gildor/vue-drizzle-crowdsale#using-getcontractdata).
 
 ### Contract address
 
@@ -105,6 +117,18 @@ Now you can access a user's address and balance:
 
 - Address: `this.activeAccount`
 - Balance: `this.activeBalance`
+
+## Tests
+
+### Solidity tests
+
+Libraries `chai` and `@openzeppelin/test-helpers` are used to help you with tests.
+
+See examples of tests [here](https://github.com/remote-gildor/vue-drizzle-crowdsale/blob/master/test/TestCrowdsale.test.js).
+
+### Vue tests
+
+To be added ...
 
 ## Verify smart contract on Etherscan
 
